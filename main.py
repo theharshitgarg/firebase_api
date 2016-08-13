@@ -37,20 +37,9 @@ def new_g():
 	from firebase import firebase
 	sam = firebase.FirebaseApplication('https://ssurppriseme.firebaseio.com/', None)
 	result = sam.get('/box_items', None)
-	temp_3 = { 'location' : { 'lat': 65, 'lng': 61}, 'content': { 'type': 'message', 'value': '454544545' } }
-	temp_2 = { 'location' : { 'lat': 85, 'lng': 50}, 'content': { 'type': 'message', 'value': 'Hello ADAS' } }
-	temp_1 = { 'location' : { 'lat': 95, 'lng': 60}, 'content': { 'type': 'video', 'value': 'https://www.youtube.com/watch?v=Awadrec-tHk' } }
-
-	print "NEW", result
-	print type(result)
-	#rr = sam.post('/box_items', temp)
-	rr = sam.post('/box_items', temp_1)
-	rr = sam.post('/box_items', temp_2)
-	rr = sam.post('/box_items', temp_3)
-	print "RRR", rr
-	result = sam.get('/box_items', None)
+	
 	return jsonify({'results': json.loads(json.dumps(result))})
-	#return 'Success'    
+
     
 if __name__=='__main__':
 	app.run()    
