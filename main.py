@@ -33,13 +33,22 @@ def user_giftsww555(lat, lng):
 
 
 @app.route('/api/new')
-def new_g():
+def get_gift():
 	from firebase import firebase
 	sam = firebase.FirebaseApplication('https://ssurppriseme.firebaseio.com/', None)
 	result = sam.get('/box_items', None)
 	
 	return jsonify({'results': json.loads(json.dumps(result))})
 
+
+@app.route('/api/new_gift', methods=['POST'])
+def new_gift():
+	if request.method == 'POST':
+		from firebase import firebase
+		sam = firebase.FirebaseApplication('https://ssurppriseme.firebaseio.com/', None)
+		temp = request.data
+		result = sam.post('/users', temp)
+		return jsonify({'status': 'success' })	
     
 if __name__=='__main__':
 	app.run()    
