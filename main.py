@@ -47,7 +47,7 @@ def new_gift():
 		from firebase import firebase
 		sam = firebase.FirebaseApplication('https://ssurppriseme.firebaseio.com/', None)
 		temp = request.data
-		result = sam.post('/users', temp)
+		result = sam.post('/box_items', temp)
 		return jsonify({'status': 'success' })	
     
 if __name__=='__main__':
